@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pizza Factory</title>
+    <link rel="icon" href="assets/icon.png">
+</head>
+<body>
+    <section id="START">
+        <span class="text_cut">PIZZA</span>
+        <nav id="navigation">
+            <div class="spacer">
+                <a class="btn" href="#ZAMOW">Zamów</a>
+                <a class="btn active" href="#START">Home</a>
+                <a class="btn" href="#KONTAKT">Kontakt</a>
+            </div>
+        </nav>
+    </section>
+    <section id="ZAMOW">
+        <h1>🍕 Utwórz swoje zamówienie 🍕</h1>
+        <section id="create_pizza">
+            
+            <!-- <div class="elements">
+                <div class="box">
+                    <h1 class="title">Ciasto</h1>
+                    <div class="bottom_type type">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h1 class="title">Sos</h1>
+                    <div class="sauce_type type">
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h1 class="title">Dodatki</h1>
+                    <div class="sauce_type type">
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div id="plate">
+                <div class="spod">
+                    <div class="extras">
+                        <div class="ser_an slide"></div>
+                        <div class="pomidor_an slide"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="dodatki">
+                <div class="dodatek ser" name="ser">🧀</div>
+                <div class="dodatek pomidor" name="pomidor">🍅</div>
+                <!-- <div class="dodatek sos_pomidorowy"></div> -->
+                <!-- <div class="dodatek sos_czosnkowy"></div> -->
+            </div>
+
+        </section>
+    </section>
+</body>
+    <script>
+        document.querySelectorAll('.btn').forEach((e) => {
+            e.addEventListener('click',menu)
+        })
+        function menu(x) {
+            const element = x.target;
+            document.querySelectorAll('.btn').forEach((e) => {
+                e.classList.remove('active')
+            })
+            element.classList.add('active')
+        }
+
+        var ser = false
+        var pomidor = false
+        // 
+        document.querySelectorAll('.dodatek').forEach((e) => {
+            e.addEventListener('click',dodatek)
+        })
+        function dodatek(x) {
+            const element = x.target;
+            const name = element.getAttribute('name')
+
+            element.classList.toggle('active')
+
+            console.warn(element.classList.contains('active'));
+
+            if (name == 'ser') {
+                ser = element.classList.contains('active')
+            } else if (name == 'pomidor') {
+                pomidor = element.classList.contains('active')
+            }
+            updatePizza()
+        }
+
+        function updatePizza() {
+            const ser_el = document.querySelector('.ser_an')
+            if (ser == true) {
+                ser_el.style.display = 'block'
+            } else {
+                ser_el.style.display = 'none'
+            }
+            const pomidor_el = document.querySelector('.pomidor_an')
+            if (pomidor == true) {
+                pomidor_el.style.display = 'block'
+            } else {
+                pomidor_el.style.display = 'none'
+            }
+        }
+    </script>
+</html>

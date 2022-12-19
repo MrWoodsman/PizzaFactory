@@ -1,0 +1,302 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: black;
+}
+html {
+    scroll-behavior: smooth;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+#START {
+    --shadow: rgba(255, 255, 255, .75) 0px 0px 4px;;
+    background: linear-gradient(rgba(0, 0, 0, 0.5) 80%,rgb(0, 0, 0) 100%), url('https://wallpapersmug.com/download/1600x900/ebde76/delicious-pizza-food.jpg');
+    background-size: 100%;
+    background-position: center;
+    width: 100%;
+    max-height: 100vh;
+    aspect-ratio: 16/9;
+    animation: ZoomBackground 5s ease-out, BackgroundPulse 10s infinite ease;
+    // postion content
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .text_cut {
+        background-color: white;
+        padding: 12px 18px;
+        mix-blend-mode: screen;
+        font-size: 1.75rem;
+        font-family: 'Archivo Black', sans-serif;
+        user-select: none;
+        animation: ZoomScale 500ms ease-out forwards;
+        box-shadow: var(--shadow);
+        &:hover {
+            &::before {
+                // transform: scale(1.25);
+                --space: 50px;
+            }
+        }
+        &::before {
+            transition: 250ms;
+            --space: 25px;
+            --size: 1px;
+            content: '';
+            width: calc(100% + var(--space));
+            height: calc(100% + var(--space));
+            // background: white;
+            box-shadow: var(--shadow), inset var(--shadow);
+            border: var(--size) solid white;
+            left: calc(-1 * var(--space) / 2 - var(--size));
+            top: calc(-1 * var(--space) / 2 - var(--size));
+            position: absolute;
+            z-index: -1;
+            mix-blend-mode: normal;
+        }
+    }
+}
+@keyframes ZoomBackground {
+    from { background-size: 125%; }
+}
+@keyframes BackgroundPulse {
+    50% { background-size: 120%; }
+}
+@keyframes ZoomScale {
+    from { transform: scale(.5); }
+}
+
+#navigation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    // background: rgba(17, 17, 17, 0.25);
+    // backdrop-filter: blur(4px);
+    // box-shadow: rgba(17, 17, 17, 0.75) 0px 0px 8px;
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 0px 4px;
+    .spacer {
+        height: 100%;
+        width: 50%;
+        min-width: 250px;
+        max-width: 500px;
+        margin: 0 auto;
+        //! POSITION CONTENT
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        a {
+            text-decoration: none;
+            font-weight: 500;
+            color: hsla(0, 0%, 100%, 1);
+        }
+        a.active {
+            font-weight: 900;
+            color: rgb(228, 166, 51);
+            text-shadow: rgb(228, 166, 51) 0px 0px 8px;
+        }
+    }
+}
+
+#ZAMOW {
+    transform: translateY(-1px);
+    padding: 64px 0;
+    width: 100%;
+    background: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    h1 {
+        font-family: 'Archivo Black', sans-serif;
+        text-transform: capitalize;
+        color: white;
+    }
+}
+
+// #create_pizza {
+//     font-family: 'Archivo Black', sans-serif;
+//     .elements {
+//         width: 100%;
+//         display: flex;
+//         flex-direction: column;
+//         gap: 12px;
+//         .box {
+//             display: flex;
+//             flex-direction: column;
+//             align-items: flex-start;
+//             gap: 4px;
+//             .title {
+//                 padding-left: 12px;
+//             }
+//         }
+//         .type {
+//             height: 124px;
+//             width: 100%;
+//             max-width: 750px;
+//             display: flex;
+//             // flex-direction: column;
+//             gap: 12px;
+//             padding: 12px 24px;
+//             background: hsl(0, 0%, 10%);
+//             border-radius: 24px;
+//         }
+//         .bottom_type {
+//             div {
+//                 height: 100px;
+//                 aspect-ratio: 1;
+//                 background: rgb(187, 165, 119);
+//                 border-radius: 50%;
+//                 border: 7px solid rgb(141, 121, 77);
+//                 perspective: 100px;
+//                 transform: rotateX(45deg);
+//                 box-shadow: inset rgb(114, 100, 71) 0px 6px 0px, rgb(100, 86, 54) 0px 6px 0px;
+//             }
+//             div:nth-child(2) {
+//                 background: rgb(173, 127, 67);
+//                 border: 7px solid rgb(138, 97, 43);
+//                 box-shadow: inset rgb(116, 85, 46) 0px 6px 0px, rgb(90, 63, 28) 0px 6px 0px;
+//             }
+//             div:nth-child(3) {
+//                 background: rgb(177, 116, 37);
+//                 border: 7px solid rgb(145, 92, 24);
+//                 box-shadow: inset rgb(119, 79, 26) 0px 6px 0px, rgb(88, 56, 13) 0px 6px 0px;
+//             }
+//         }
+//         .sauce_type {
+//             div {
+//                 perspective: 100px;
+//                 transform: rotateX(45deg);
+//                 height: 100px;
+//                 aspect-ratio: 1;
+//                 background: rgb(172, 15, 15);
+//                 border-radius: 50%;
+//                 box-shadow: rgb(122, 11, 11) 0px 4px 0px;
+//                 &::after, &::before {
+//                     content: '';
+//                     width: 25px;
+//                     aspect-ratio: 1;
+//                     border-radius: 50%;
+//                     background: rgb(194, 25, 25);
+//                     position: absolute;
+//                     right: calc(100% - 45px);
+//                     top: 20px;
+//                 }
+//                 &::before {
+//                     width: 15px;
+//                     right: 15px;
+//                     top: 65px;
+//                 }
+//             }
+//             div:nth-child(2) {
+//                 background: rgb(180, 171, 171);
+//                 box-shadow: rgb(119, 113, 113) 0px 4px 0px;
+//                 &::after, &::before {
+//                     background: rgb(214, 208, 208);
+//                 }
+//             }
+//         }
+//     }
+// }
+
+#create_pizza {
+    width: 100%;
+    display: grid;
+    place-content: center;
+    grid-template-columns: 100px 250px 100px;
+    grid-template-rows: 100px 250px auto;
+    grid-template-areas: 
+    "corner1 top corner2"
+    "left plate sidebaright"
+    "corner3 bottom corner4";
+}
+
+#plate {
+    width: 100%;
+    aspect-ratio: 1;
+    perspective: 100px;
+    background: rgb(204, 204, 204);
+    box-shadow: rgb(158, 158, 158) 0px 10px;
+    transform: rotateX(60deg);
+    border-radius: 50%;
+    grid-area: plate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .spod {
+        width: calc(100% - 50px);
+        transform: translateY(-12px);
+        aspect-ratio: 1;
+        background: rgb(189, 144, 86);
+        box-shadow: rgb(170, 127, 71) 0px 12px, 
+            rgba(17, 17, 17, 0.75) 0px 12px 10px;
+        border-radius: 50%;
+    }
+    .extras {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+#dodatki {
+    grid-area: bottom;
+    display: flex;
+    align-items: flex-start;    
+    justify-content: center;
+    gap: 8px;
+    .dodatek {
+        cursor: pointer;
+        width: 75px;
+        aspect-ratio: 1;
+        background: rgba(255, 255, 255, 0.25);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        line-height: 0;
+    }
+    .dodatek.active {
+        background: rgba(255, 255, 255, 0.5) !important;
+    }
+}
+
+.ser_an {
+    display: none;
+    position: absolute;
+    background: orange;
+    width: 100%;
+    height: 100%;
+    background: url('assets/ser.png');
+    border-radius: 50%;
+    background-size: 200%;
+    background-position: center;
+}
+.pomidor_an {
+    display: none;
+    position: absolute;
+    background: orange;
+    width: 100%;
+    height: 100%;
+    background: url('assets/pomidor.png');
+    border-radius: 50%;
+    background-size: 200%;
+    background-position: center;
+}
+
+.slide {
+    animation: SlideDown 500ms;
+}
+
+@keyframes SlideDown {
+    from { transform: translateY(-150px); }
+}

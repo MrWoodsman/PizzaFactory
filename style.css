@@ -1,0 +1,242 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background: black;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+#START {
+  --shadow: rgba(255, 255, 255, .75) 0px 0px 4px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5) 80%, rgb(0, 0, 0) 100%), url("https://wallpapersmug.com/download/1600x900/ebde76/delicious-pizza-food.jpg");
+  background-size: 100%;
+  background-position: center;
+  width: 100%;
+  max-height: 100vh;
+  aspect-ratio: 16/9;
+  -webkit-animation: ZoomBackground 5s ease-out, BackgroundPulse 10s infinite ease;
+          animation: ZoomBackground 5s ease-out, BackgroundPulse 10s infinite ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#START .text_cut {
+  background-color: white;
+  padding: 12px 18px;
+  mix-blend-mode: screen;
+  font-size: 1.75rem;
+  font-family: "Archivo Black", sans-serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-animation: ZoomScale 500ms ease-out forwards;
+          animation: ZoomScale 500ms ease-out forwards;
+  box-shadow: var(--shadow);
+}
+#START .text_cut:hover::before {
+  --space: 50px;
+}
+#START .text_cut::before {
+  transition: 250ms;
+  --space: 25px;
+  --size: 1px;
+  content: "";
+  width: calc(100% + var(--space));
+  height: calc(100% + var(--space));
+  box-shadow: var(--shadow), inset var(--shadow);
+  border: var(--size) solid white;
+  left: calc(-1 * var(--space) / 2 - var(--size));
+  top: calc(-1 * var(--space) / 2 - var(--size));
+  position: absolute;
+  z-index: -1;
+  mix-blend-mode: normal;
+}
+
+@-webkit-keyframes ZoomBackground {
+  from {
+    background-size: 125%;
+  }
+}
+
+@keyframes ZoomBackground {
+  from {
+    background-size: 125%;
+  }
+}
+@-webkit-keyframes BackgroundPulse {
+  50% {
+    background-size: 120%;
+  }
+}
+@keyframes BackgroundPulse {
+  50% {
+    background-size: 120%;
+  }
+}
+@-webkit-keyframes ZoomScale {
+  from {
+    transform: scale(0.5);
+  }
+}
+@keyframes ZoomScale {
+  from {
+    transform: scale(0.5);
+  }
+}
+#navigation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  box-shadow: rgba(255, 255, 255, 0.25) 0px 0px 4px;
+}
+#navigation .spacer {
+  height: 100%;
+  width: 50%;
+  min-width: 250px;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#navigation .spacer a {
+  text-decoration: none;
+  font-weight: 500;
+  color: hsl(0deg, 0%, 100%);
+}
+#navigation .spacer a.active {
+  font-weight: 900;
+  color: rgb(228, 166, 51);
+  text-shadow: rgb(228, 166, 51) 0px 0px 8px;
+}
+
+#ZAMOW {
+  transform: translateY(-1px);
+  padding: 64px 0;
+  width: 100%;
+  background: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+#ZAMOW h1 {
+  font-family: "Archivo Black", sans-serif;
+  text-transform: capitalize;
+  color: white;
+}
+
+#create_pizza {
+  width: 100%;
+  display: grid;
+  place-content: center;
+  grid-template-columns: 100px 250px 100px;
+  grid-template-rows: 100px 250px auto;
+  grid-template-areas: "corner1 top corner2" "left plate sidebaright" "corner3 bottom corner4";
+}
+
+#plate {
+  width: 100%;
+  aspect-ratio: 1;
+  perspective: 100px;
+  background: rgb(204, 204, 204);
+  box-shadow: rgb(158, 158, 158) 0px 10px;
+  transform: rotateX(60deg);
+  border-radius: 50%;
+  grid-area: plate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#plate .spod {
+  width: calc(100% - 50px);
+  transform: translateY(-12px);
+  aspect-ratio: 1;
+  background: rgb(189, 144, 86);
+  box-shadow: rgb(170, 127, 71) 0px 12px, rgba(17, 17, 17, 0.75) 0px 12px 10px;
+  border-radius: 50%;
+}
+#plate .extras {
+  height: 100%;
+  width: 100%;
+}
+
+#dodatki {
+  grid-area: bottom;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+}
+#dodatki .dodatek {
+  cursor: pointer;
+  width: 75px;
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  line-height: 0;
+}
+#dodatki .dodatek.active {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.ser_an {
+  display: none;
+  position: absolute;
+  background: orange;
+  width: 100%;
+  height: 100%;
+  background: url("assets/ser.png");
+  border-radius: 50%;
+  background-size: 200%;
+  background-position: center;
+}
+
+.pomidor_an {
+  display: none;
+  position: absolute;
+  background: orange;
+  width: 100%;
+  height: 100%;
+  background: url("assets/pomidor.png");
+  border-radius: 50%;
+  background-size: 200%;
+  background-position: center;
+}
+
+.slide {
+  -webkit-animation: SlideDown 500ms;
+          animation: SlideDown 500ms;
+}
+
+@-webkit-keyframes SlideDown {
+  from {
+    transform: translateY(-150px);
+  }
+}
+
+@keyframes SlideDown {
+  from {
+    transform: translateY(-150px);
+  }
+}/*# sourceMappingURL=style.css.map */
